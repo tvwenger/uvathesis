@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Title
+% PhD Dissertation
+% Author
+%
+% Compile with
+% latex/pdflatex thesis
+% bibtex thesis
+% latex/pdflatex thesis
+% latex/pdflatex thesis
+%
+% Use ``latex'' if you use postscript images
+% Use ``pdflatex'' otherwise
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The default parameters are: 12pt,oneside,doublespace
+\documentclass[12pt,twoside,doublespace]{uvathesis}
+
+% The following allows for typical AAS-journal citation methods.
+\usepackage{natbib}
+\bibliographystyle{aasjournal}
+
+% Some other useful packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{afterpage}
+\usepackage{emptypage}
+
+% Load user-defined macros (e.g., journal abbreviations)
+\input macros.tex
+
+% Suppress warnings about PDF page groups
+\pdfsuppresswarningpagegroup=1
+
+% Footer images with filename ``footer/image_X''
+% where X is like 1.jpg, ..., 10.jpg, ..., 100.jpg
+% \footerimage{footer/image_}
+
+% Title page information
+\title{My Title Here \\ {\normalsize Draft: \today}}
+\author{My Full Name}
+\hometown{My Hometown, My Home State}
+\bachelors{B.A. Astronomy, Cool School, 20XX}
+\masters{M.S. Astronomy, University of Virginia, 20X}
+\masterstwo{} % If you have a second masters degree
+\department{Department of Astronomy}
+\degreename{Doctor of Philosophy}
+\commencementmonthyear{May 20XX} % This is the month of final exercises
+\commencementdate{May XX, 20XX} % This is the date of final exercises
+
+% Committee Members. First one should be PhD advisor
+\committeeone{My Advisor}
+\committeetwo{Member No. 1}
+\committeethree{Member No. 2}
+\committeefour{Member No. 3}
+\committeefive{Member No. 4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Beginning of document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Make title and copyright page
+\frontmatter
+\maketitle
+\makecopyright
+
+% Make abstract page. Parameter should be name of file containing
+% the abstract (without file extension)
+\makeabstract{abstract}
+
+% Optional: Make acknowledgements page. Parameter should be name of
+% file containing the acknowledgements (without file extension)
+\makeacknowledgements{acknowledgements}
+
+% Optional: Make dedications page. Parameter should be dedication
+% text.
+\makededication{Here's my dedication}
+
+% Make Table of Contents, List of Figures, and List of Tables
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+\listoffigures
+\cleardoublepage
+\listoftables
+
+% Begin body of document
+\mainmatter
+
+% Include each chapter located in
+% chapter_X/chapter_X.tex
+\cleardoublepage
+\include{chapter_1/chapter_1}
+\cleardoublepage
+\include{chapter_2/chapter_2}
+\cleardoublepage
+\include{chapter_3/chapter_3}
+
+% Begin the appendix
+\begin{appendices}
+  % Include the appendix located in
+  % appendix_X/appendix_X.tex
+  \cleardoublepage
+  \include{appendix_A/appendix_A}
+\end{appendices}
+
+%
+% Load the bibliography, biographical sketch, and CV
+%
+\makereferences{thesis}
+\makebiosketch{biosketch}
+\makecv{cv}
+
+\end{document}
